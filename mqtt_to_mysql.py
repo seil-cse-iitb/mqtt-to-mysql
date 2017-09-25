@@ -10,7 +10,6 @@ MQTT_HOST="10.129.23.41"
 MQTT_PORT=1883
 MQTT_TOPIC="nodemcu/kresit/dht/"
 room_name=""
-
 def get_mqtt_msg():
 
     def on_connect(client, userdata, flags, rc):
@@ -27,8 +26,7 @@ def get_mqtt_msg():
       ts=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
       insert_to_db(room_name,ts,node_id,temp,humidity,volt)
 
-
-    client = mqtt.Client(protocol=mqtt.MQTTv31)
+    client = mqtt.Client("LH Data -- Parth")
     client.on_connect = on_connect
     client.on_message = on_message
     client.connect(MQTT_HOST, MQTT_PORT, 60)
